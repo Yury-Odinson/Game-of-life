@@ -1,3 +1,7 @@
+:root {
+    --var-background: rgba(224, 223, 223, 0.41)
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,4 +14,17 @@ html {
     /*text-decoration: none;*/
     /*list-style-type: none;*/
     /*outline: none;*/
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: var(--var-background);
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
