@@ -1,23 +1,23 @@
-import {createElement, Field} from "./module";
+import {createElement} from "./module";
+import {game} from "./index";
 
-const field = new Field();
 export const checkField = createElement("button", [], {});
 checkField.innerHTML = "check field";
-checkField.addEventListener("click", () => console.log(field.matrix));
+checkField.addEventListener("click", () => console.log(game.matrix));
 
-
-export const startGame = createElement("button", [],{});
-startGame.innerHTML = "start Game";
+export const startGame = createElement("button", [], {});
+startGame.innerHTML = "start Canvas";
 startGame.addEventListener("click", () => start());
 
+export const nextStep = createElement("button", [], {});
+nextStep.innerHTML = "next step";
+nextStep.addEventListener("click", () => game.updateField());
+
 function start() {
-    field.setCellValue(5,6,1);
-    field.setCellValue(6,7,1);
-    field.setCellValue(7,5,1);
-    field.setCellValue(7,6,1);
-    field.setCellValue(7,7,1);
-    console.log(field.matrix);
+    game.setCellValue(5, 6, 1);
+    game.setCellValue(6, 7, 1);
+    game.setCellValue(7, 5, 1);
+    game.setCellValue(7, 6, 1);
+    game.setCellValue(7, 7, 1);
+    game.updateField();
 }
-
-
-

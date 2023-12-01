@@ -1,12 +1,11 @@
 import "./index.css";
-import {createElement, Field} from "./module";
-import {Game} from "./canvas";
-import {checkField, startGame} from "./controls";
+import {createElement} from "./module";
+import {checkField, nextStep, startGame} from "./controls";
+import {Game} from "./game";
 
 export const wrapper = createElement("div", ["wrapper"], {});
 document.body.appendChild(wrapper);
 
-const game = new Game();
-
+export const game = new Game();
 window.onload = () => game.init();
-wrapper.append(checkField, startGame);
+wrapper.append(checkField, startGame, nextStep);
