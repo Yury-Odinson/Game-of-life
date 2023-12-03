@@ -7,21 +7,21 @@ export class Canvas {
             {"id": "canvas", "width": "400", "height": "400"}
         );
         this.ctx = this.canvas.getContext("2d");
-        this.cellSize = 20;
+        this.cellSize = 40;
     }
 
     initialMatrix() {
-        const field = new Array(20);
-        for (let i = 0; i < 20; i++) {
-            field[i] = new Array(20).fill(0);
+        const field = new Array(10);
+        for (let i = 0; i < 10; i++) {
+            field[i] = new Array(10).fill(0);
         }
         return field;
     }
 
     drawField(matrix) {
         console.log(matrix);
-        for (let i = 0; i < 20; i++) {
-            for (let j = 0; j < 20; j++) {
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
 
                 const x = j * this.cellSize;
                 const y = i * this.cellSize;

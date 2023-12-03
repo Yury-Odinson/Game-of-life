@@ -6,18 +6,24 @@ checkField.innerHTML = "check field";
 checkField.addEventListener("click", () => console.log(game.matrix));
 
 export const startGame = createElement("button", [], {});
-startGame.innerHTML = "start Canvas";
+startGame.innerHTML = "start Game";
 startGame.addEventListener("click", () => start());
 
 export const nextStep = createElement("button", [], {});
-nextStep.innerHTML = "next step";
-nextStep.addEventListener("click", () => game.updateField());
+nextStep.innerHTML = "set cell";
+nextStep.addEventListener("click", () => game.checkAllCells());
+
+
+export const test = createElement("button", [], {});
+test.innerHTML = "test";
+test.addEventListener("click", () => game.findLiveNeighbours(4, 2));
+
 
 function start() {
-    game.setCellValue(5, 6, 1);
-    game.setCellValue(6, 7, 1);
-    game.setCellValue(7, 5, 1);
-    game.setCellValue(7, 6, 1);
-    game.setCellValue(7, 7, 1);
+    game.setDefaultCellValue(1, 2, 1);
+    game.setDefaultCellValue(2, 3, 1);
+    game.setDefaultCellValue(3, 1, 1);
+    game.setDefaultCellValue(3, 2, 1);
+    game.setDefaultCellValue(3, 3, 1);
     game.updateField();
 }
