@@ -2,7 +2,7 @@ import {Canvas} from "./canvas";
 
 export class Game {
 
-    #dim = 20;
+    #dimension = 20;
 
     constructor() {
         this.matrix = this.#createMatrix();
@@ -11,9 +11,9 @@ export class Game {
     };
 
     #createMatrix() {
-        const field = new Array(this.#dim);
-        for (let i = 0; i < this.#dim; i++) {
-            field[i] = new Array(this.#dim).fill(0);
+        const field = new Array(this.#dimension);
+        for (let i = 0; i < this.#dimension; i++) {
+            field[i] = new Array(this.#dimension).fill(0);
         }
         return field;
     };
@@ -29,7 +29,7 @@ export class Game {
         for (let i = row - 1; i <= row + 1; i++) {
             for (let j = col - 1; j <= col + 1; j++) {
 
-                if (i >= 0 && i < this.#dim && j >= 0 && j < this.#dim) {
+                if (i >= 0 && i < this.#dimension && j >= 0 && j < this.#dimension) {
                     if (i === row && j === col) continue;
                     if (this.matrix[i][j] === 1) {
                         sumLiveNeighbours++;
@@ -45,8 +45,8 @@ export class Game {
 
         const newMatrix = this.#createMatrix();
 
-        for (let i = 0; i < this.#dim; i++) {
-            for (let j = 0; j < this.#dim; j++) {
+        for (let i = 0; i < this.#dimension; i++) {
+            for (let j = 0; j < this.#dimension; j++) {
 
                 const currentCell = this.matrix[i][j];
                 const quantityLiveNeighbours = this.findLiveNeighbours(i, j);

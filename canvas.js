@@ -3,7 +3,7 @@ import {wrapper} from "./index";
 
 export class Canvas {
 
-    #dim = 20;
+    dimension = 20;
 
     constructor() {
         this.canvas = createElement("canvas", [],
@@ -13,19 +13,19 @@ export class Canvas {
     }
 
     initialMatrix() {
-        const field = new Array(this.#dim);
-        for (let i = 0; i < this.#dim; i++) {
-            field[i] = new Array(this.#dim).fill(0);
+        const field = new Array(this.dimension);
+        for (let i = 0; i < this.dimension; i++) {
+            field[i] = new Array(this.dimension).fill(0);
         }
         return field;
     }
 
     drawField(matrix) {
-        for (let i = 0; i < this.#dim; i++) {
-            for (let j = 0; j < this.#dim; j++) {
+        for (let i = 0; i < this.dimension; i++) {
+            for (let j = 0; j < this.dimension; j++) {
 
-                const x = j * this.#dim;
-                const y = i * this.#dim;
+                const x = j * this.dimension;
+                const y = i * this.dimension;
 
                 if (matrix[i][j] !== 0) {
                     this.ctx.fillStyle = "black";
@@ -33,8 +33,8 @@ export class Canvas {
                     this.ctx.fillStyle = "white";
                 }
 
-                this.ctx.fillRect(x, y, this.#dim, this.#dim);
-                this.ctx.strokeRect(x, y, this.#dim, this.#dim);
+                this.ctx.fillRect(x, y, this.dimension, this.dimension);
+                this.ctx.strokeRect(x, y, this.dimension, this.dimension);
             }
         }
     };
