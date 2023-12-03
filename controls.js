@@ -1,23 +1,13 @@
 import {createElement} from "./module";
 import {game} from "./index";
 
-export const checkField = createElement("button", [], {});
-checkField.innerHTML = "check field";
-checkField.addEventListener("click", () => console.log(game.matrix));
+export const newGame = createElement("button", [], {});
+newGame.innerHTML = "new Game";
+newGame.addEventListener("click", () => start());
 
-export const startGame = createElement("button", [], {});
-startGame.innerHTML = "start Game";
-startGame.addEventListener("click", () => start());
-
-export const nextStep = createElement("button", [], {});
-nextStep.innerHTML = "set cell";
-nextStep.addEventListener("click", () => game.checkAllCells());
-
-
-export const test = createElement("button", [], {});
-test.innerHTML = "test";
-test.addEventListener("click", () => game.findLiveNeighbours(4, 2));
-
+export const startStopGame = createElement("button", [], {});
+startStopGame.innerHTML = "start / pause Game";
+startStopGame.addEventListener("click", () => game.processGame());
 
 function start() {
     game.setDefaultCellValue(1, 2, 1);

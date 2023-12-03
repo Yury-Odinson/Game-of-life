@@ -4,6 +4,7 @@ export class Game {
     constructor(row, col, initValue) {
         this.matrix = this.createMatrix();
         this.canvas = new Canvas();
+        this.isGame = false;
     };
 
     createMatrix() {
@@ -66,6 +67,17 @@ export class Game {
         this.matrix = newMatrix;
         this.updateField();
 
+    };
+
+    processGame() {
+        this.isGame = !this.isGame;
+        if (this.isGame) {
+            this.timer = setInterval(() => {
+                this.checkAllCells();
+            }, 500)
+        } else {
+            clearInterval(this.timer);
+        }
     };
 
     updateField() {
