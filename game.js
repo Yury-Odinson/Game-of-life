@@ -2,7 +2,7 @@ import {Canvas} from "./canvas";
 
 export class Game {
 
-    #dimension = 20;
+    #dimension = 40;
 
     constructor() {
         this.matrix = this.#createMatrix();
