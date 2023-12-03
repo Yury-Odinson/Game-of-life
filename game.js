@@ -1,35 +1,35 @@
 import {Canvas} from "./canvas";
 
 export class Game {
-    constructor(row, col, initValue) {
-        this.matrix = this.createMatrix();
+
+    #dim = 20;
+
+    constructor() {
+        this.matrix = this.#createMatrix();
         this.canvas = new Canvas();
-        this.isGame = false;
+        this.isRunning = false;
     };
 
-    createMatrix() {
-        const field = new Array(10);
-        for (let i = 0; i < 10; i++) {
-            field[i] = new Array(10).fill(0);
+    #createMatrix() {
+        const field = new Array(this.#dim);
+        for (let i = 0; i < this.#dim; i++) {
+            field[i] = new Array(this.#dim).fill(0);
         }
         return field;
     };
 
-    setDefaultCellValue(row, col, value) {
+    setCellValue(row, col, value) {
         this.matrix[row][col] = value;
     };
 
     findLiveNeighbours(row, col) {
-
-        const rows = this.matrix.length;
-        const cols = this.matrix[0].length;
 
         let sumLiveNeighbours = 0;
 
         for (let i = row - 1; i <= row + 1; i++) {
             for (let j = col - 1; j <= col + 1; j++) {
 
-                if (i >= 0 && i < rows && j >= 0 && j < cols) {
+                if (i >= 0 && i < this.#dim && j >= 0 && j < this.#dim) {
                     if (i === row && j === col) continue;
                     if (this.matrix[i][j] === 1) {
                         sumLiveNeighbours++;
@@ -42,13 +42,11 @@ export class Game {
     };
 
     checkAllCells() {
-        const rows = this.matrix.length;
-        const cols = this.matrix[0].length;
 
-        const newMatrix = this.createMatrix();
+        const newMatrix = this.#createMatrix();
 
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
+        for (let i = 0; i < this.#dim; i++) {
+            for (let j = 0; j < this.#dim; j++) {
 
                 const currentCell = this.matrix[i][j];
                 const quantityLiveNeighbours = this.findLiveNeighbours(i, j);
@@ -65,22 +63,22 @@ export class Game {
         }
 
         this.matrix = newMatrix;
-        this.updateField();
+        this.renderField();
 
     };
 
     processGame() {
-        this.isGame = !this.isGame;
-        if (this.isGame) {
+        this.isRunning = !this.isRunning;
+        if (this.isRunning) {
             this.timer = setInterval(() => {
                 this.checkAllCells();
-            }, 500)
+            }, 100)
         } else {
             clearInterval(this.timer);
         }
     };
 
-    updateField() {
+    renderField() {
         this.canvas.drawField(this.matrix);
     };
 

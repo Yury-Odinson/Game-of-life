@@ -10,10 +10,10 @@ startStopGame.innerHTML = "start / pause Game";
 startStopGame.addEventListener("click", () => game.processGame());
 
 function start() {
-    game.setDefaultCellValue(1, 2, 1);
-    game.setDefaultCellValue(2, 3, 1);
-    game.setDefaultCellValue(3, 1, 1);
-    game.setDefaultCellValue(3, 2, 1);
-    game.setDefaultCellValue(3, 3, 1);
-    game.updateField();
+    game.setCellValue(1, 2, 1);
+    game.setCellValue(2, 3, 1);
+    game.setCellValue(3, 1, 1);
+    game.setCellValue(3, 2, 1);
+    game.setCellValue(3, 3, 1);
+    game.renderField();
 }

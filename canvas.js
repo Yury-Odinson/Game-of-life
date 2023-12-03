@@ -2,28 +2,30 @@ import {createElement} from "./module";
 import {wrapper} from "./index";
 
 export class Canvas {
+
+    #dim = 20;
+
     constructor() {
         this.canvas = createElement("canvas", [],
             {"id": "canvas", "width": "400", "height": "400"}
         );
         this.ctx = this.canvas.getContext("2d");
-        this.cellSize = 40;
     }
 
     initialMatrix() {
-        const field = new Array(10);
-        for (let i = 0; i < 10; i++) {
-            field[i] = new Array(10).fill(0);
+        const field = new Array(this.#dim);
+        for (let i = 0; i < this.#dim; i++) {
+            field[i] = new Array(this.#dim).fill(0);
         }
         return field;
     }
 
     drawField(matrix) {
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; j < 10; j++) {
+        for (let i = 0; i < this.#dim; i++) {
+            for (let j = 0; j < this.#dim; j++) {
 
-                const x = j * this.cellSize;
-                const y = i * this.cellSize;
+                const x = j * this.#dim;
+                const y = i * this.#dim;
 
                 if (matrix[i][j] !== 0) {
                     this.ctx.fillStyle = "black";
@@ -31,8 +33,8 @@ export class Canvas {
                     this.ctx.fillStyle = "white";
                 }
 
-                this.ctx.fillRect(x, y, this.cellSize, this.cellSize);
-                this.ctx.strokeRect(x, y, this.cellSize, this.cellSize);
+                this.ctx.fillRect(x, y, this.#dim, this.#dim);
+                this.ctx.strokeRect(x, y, this.#dim, this.#dim);
             }
         }
     };
