@@ -1,5 +1,6 @@
 :root {
-    --var-background: rgba(224, 223, 223, 0.41)
+    --background: rgba(224, 223, 223, 0.41);
+    --hoverButton: rgba(196, 196, 196, 0.41);
 }
 
 * {
@@ -11,9 +12,12 @@
 html {
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
-    /*text-decoration: none;*/
-    /*list-style-type: none;*/
-    /*outline: none;*/
+}
+
+button {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
 }
 
 .wrapper {
@@ -23,8 +27,32 @@ html {
     width: fit-content;
     height: fit-content;
     border-radius: 10px;
-    background-color: var(--var-background);
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    background-color: var(--background);
+    -webkit-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.controls__button {
+    background-color: #fff;
+    border: none;
+    transition: 0.2s;
+}
+
+.controls__button:hover {
+    background-color: var(--hoverButton);
+}
+
+.controls__button:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.controls__button:last-child {
+    border-radius: 0 10px 10px 0;
 }
